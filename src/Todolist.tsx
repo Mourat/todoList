@@ -1,17 +1,27 @@
 import React from "react";
 
-export const Todolist = () => {
+type propsType = {
+    title: string,
+    tasks: Array<taskType>
+}
+type taskType = {
+    id: number,
+    isDone: boolean,
+    title: string
+}
+
+export const Todolist = ({title, tasks}:propsType) => {
     return (
         <div>
-            <h3>What to learn</h3>
+            <h3>{title}</h3>
             <div>
                 <input/>
                 <button>+</button>
             </div>
             <ul>
-                <li><input type="checkbox" checked={true}/> <span>HTML&CSS</span></li>
-                <li><input type="checkbox" checked={true}/> <span>JS</span></li>
-                <li><input type="checkbox" checked={false}/> <span>React</span></li>
+                <li><input type="checkbox" checked={tasks[0].isDone}/> <span>{tasks[0].title}</span></li>
+                <li><input type="checkbox" checked={tasks[1].isDone}/> <span>{tasks[1].title}</span></li>
+                <li><input type="checkbox" checked={tasks[2].isDone}/> <span>{tasks[2].title}</span></li>
             </ul>
             <div>
                 <button>All</button>
